@@ -4,12 +4,12 @@ from pygame.locals import *
 def main() :
     os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (0,30)
     pygame.init()
-    gameicon = pygame.image.load('./icon.png')
-    pygame.display.set_icon(gameicon)
-    pygame.display.set_caption('Tic Tac Toe')
     screen_info = pygame.display.Info()
     size = (screen_info.current_w,screen_info.current_h)
     screen = pygame.display.set_mode(size, RESIZABLE)
+    gameicon = pygame.image.load('./icon.png')
+    pygame.display.set_icon(gameicon)
+    pygame.display.set_caption('Tic Tac Toe')
 
     clock = pygame.time.Clock()
 
