@@ -144,6 +144,9 @@ def ask_restart(screen, size) :
         pygame.display.update() 
 
 def ask_input(screen, size) :
+    xrect = Rect(size[0]//3, size[1]//2, 200, 150)
+    yrect = Rect(size[0]//2 + 80, size[1]//2, 200, 150)
+
     while True :
         for event in pygame.event.get() :
             if event.type == QUIT :
@@ -164,13 +167,9 @@ def ask_input(screen, size) :
                 screen.convert()
                 pygame.display.update()
 
-        xrect = Rect(size[0]//3, size[1]//2, 200, 150)
         ximage = pygame.image.load('./x.png')
-        ximage = pygame.transform.scale(ximage, (200,150))
-        
-        yrect = Rect(size[0]//2 + 80, size[1]//2, 200, 150)
+
         yimage = pygame.image.load('./o.png')
-        yimage = pygame.transform.scale(yimage, (200,150))
 
         optiontext = pygame.font.Font('GlueGun-GW8Z.ttf',50)
         optionsurf = optiontext.render('Choose Your Character By Clicking On One Of The Options Below', True, (0,0,0))
@@ -269,44 +268,44 @@ def game(screen,size,playeroption) :
         board[move] = option
 
     def display_board() :
+        
         pygame.draw.line(screen,(0,0,0),(602,25),(602,636),6) ; pygame.draw.line(screen,(0,0,0),(808,25),(808,636),6) #vertical
         pygame.draw.line(screen,(0,0,0),(400,227),(1011,227),6) ; pygame.draw.line(screen,(0,0,0),(400,433),(1011,433),6) #horizontal
 
         for key,value in board.items() :
             if key == 1 :
                 x = 400
-                y = 437
+                y = 462
             if key == 2 :
                 x = 606
-                y = 437
+                y = 462
             if key == 3 :
                 x = 812
-                y = 437
+                y = 462
             if key == 4 :
                 x = 400
-                y = 231
+                y = 256
             if key == 5 :
                 x = 606
-                y = 231
+                y = 256
             if key == 6 :
                 x = 812
-                y = 231
+                y = 256
             if key == 7 :
                 x = 400
-                y = 25
+                y = 50
             if key == 8 :
                 x = 606
-                y = 25
+                y = 50
             if key == 9 :
                 x = 812
-                y = 25
+                y = 50
             if value == "X" :
                 image = pygame.image.load('./x.png')
             elif value == "O" :
                 image = pygame.image.load('./o.png')
             else :
                 continue
-            image = pygame.transform.scale(image,(200,200))
             screen.blit(image,(x,y))
 
         pygame.display.update()
